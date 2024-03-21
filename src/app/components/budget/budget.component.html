@@ -1,0 +1,14 @@
+<div class="row mt-5">
+  <div class="col-lg-6 offset-lg-3 ">
+    <h2 class="text-center fontTitle">Ingrese presupuesto</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center mb-2">
+          <span class="badge bg-danger textError" *ngIf="countStatus">El presupuesto debe ser mayor a 0</span>
+        </div>
+        <input [(ngModel)]="count" type="text" class="form-control form-control-lg fontText" placeholder="Ingrese su presupuesto...">
+        <button class="btn btn-secondary btn-lg btn-block mt-2 fontText" (click)="addBudget()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
