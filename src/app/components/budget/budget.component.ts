@@ -9,15 +9,17 @@ import { BudgetService } from 'src/app/services/budget.service';
   styleUrls: ['./budget.component.scss'],
 })
 export class BudgetComponent {
-  count: number;
+  count: number | null;
   countStatus: boolean;
 
   constructor(private _budgetService: BudgetService, private router: Router) {
-    this.count = 0;
+    this.count = null;
     this.countStatus = false;
   }
 
   addBudget() {
+    if (this.count === null) return;
+
     if (this.count > 0) {
       this.countStatus = false;
       this._budgetService.budget = this.count;

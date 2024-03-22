@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 
+import { Observable, Subject } from 'rxjs';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BudgetService {
-  budget:number;
+  budget: number;
   remaining: number;
+  listBills: Subject<any>;
 
-  constructor() { 
+  constructor() {
     this.budget = 0;
     this.remaining = 0;
+    this.listBills = new Subject();
+  }
+
+  addBill(bill: object) {
+    this.listBills.next(bill);
+  }
+
+  getBills(): Observable<any> {
+    return this.listBills.asObservable();
   }
 }
