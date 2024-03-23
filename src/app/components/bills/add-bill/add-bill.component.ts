@@ -21,7 +21,7 @@ export class AddBillComponent {
   }
 
   addBill() {
-    if (this.count === null || this.name === '') {
+    if (this.count === null || this.count === 0 || this.name === '') {
       this.formIncorrect = true;
       this.textError = 'La cantidad y el nombre del gasto son obligatorios';
       return;
