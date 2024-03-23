@@ -8,19 +8,20 @@ import { Observable, Subject } from 'rxjs';
 export class BudgetService {
   budget: number;
   remaining: number;
-  listBills: Subject<any>;
+  listBills$: Subject<any>;
 
   constructor() {
     this.budget = 0;
     this.remaining = 0;
-    this.listBills = new Subject();
+    this.listBills$ = new Subject();
   }
 
-  addBill(bill: object) {
-    this.listBills.next(bill);
+  addBill(bill: { name: string; count: number }) {
+    this.remaining = this.remaining - bill.count;
+    this.listBills$.next(bill);
   }
 
   getBills(): Observable<any> {
-    return this.listBills.asObservable();
+    return this.listBills$.asObservable();
   }
 }

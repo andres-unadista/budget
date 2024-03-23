@@ -28,7 +28,7 @@ export class AddBillComponent {
     }
     if (this.count > this._budgetService.remaining) {
       this.formIncorrect = true;
-      this.textError = 'El gasto no puede ser mayor al presupuesto';
+      this.textError = 'El gasto no puede ser mayor al restante';
       return;
     }
 
@@ -42,6 +42,8 @@ export class AddBillComponent {
 
     // clear form
     this.formIncorrect = false;
+    this.count = null;
+    this.name = '';
     this.textError = '';
   }
 }
